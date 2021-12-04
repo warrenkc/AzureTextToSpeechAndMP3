@@ -13,12 +13,12 @@
 <body class="bg-primary bg-blue">
     <div class="container bg-white shadow">
         <div class="col-12 col-md-8 p-3">
-            <div id="warning">
+            <!-- <div id="warning">
                 <h1 style="font-weight:500;">Speech Speech SDK not found
                     (microsoft.cognitiveservices.speech.sdk.bundle.js missing).</h1>
-            </div>
+            </div> -->
 
-            <div id="content" style="display:none">
+            <div id="content">
                 
                 <p class="display-6">Text to Audio / Text to MP3 Audio File</p>
                 <p><a href="https://drive.google.com/file/d/11Dk1fR9e4AexWoHSaZ0VH2z8Orbe3WBD/view?usp=sharing" target="_blank">Watch video tutorial on how to use this webpage.</a></p>
@@ -106,8 +106,8 @@
         // On document load resolve the Speech SDK dependency
         function Initialize(onComplete) {
             if (!!window.SpeechSDK) {
-                document.getElementById('content').style.display = 'block';
-                document.getElementById('warning').style.display = 'none';
+                // document.getElementById('content').style.display = 'block';
+                // document.getElementById('warning').style.display = 'none';
                 onComplete(window.SpeechSDK);
             }
         }
@@ -492,8 +492,7 @@
                 rememberLastUsedParameters();
             });
             voiceOptions.addEventListener("change", () => {
-                rememberLastUsedParameters();
-                console.log("Voice selection changed.");
+                rememberLastUsedParameters();                
             });
             stripButton.addEventListener("click", () => {
                 stripVerseNumbers();
