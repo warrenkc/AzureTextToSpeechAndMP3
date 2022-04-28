@@ -575,7 +575,7 @@
 
                 //es7
                 Object.keys(myObject).forEach(key => {
-                    res = res.replace(`/${key}./g`, myObject[key]);
+                    res = res.replace(`/${key.toString()}./g`, myObject[key]);
                     console.log(key, myObject[key]) // key , value
                 })
 
