@@ -11,8 +11,13 @@
         crossorigin="anonymous"></script>
     <meta charset="utf-8" />
     <style>
-        mark { 
-        color: red;
+        mark {
+            background-color: yellow;
+            color: black;
+        }
+        #highlightDiv {
+            overflow: scroll;
+            height: 200px;
         }
     </style>
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -102,13 +107,13 @@
                     <button type="button" id="stripButton" class="btn mt-3 mb-3 btn-primary">📝 Strip verse numbers from
                         text</button>
                     <br />
-                    <label for="resultsDiv" class="form-label">Results</label>
+                    <label for="resultsDiv" class="form-label">Results:</label>
                     <label for="highlightDiv" class="form-label"></label>
-                    <div id="highlightDiv" class="d-inline-block m-1"></div>
+                    <div id="highlightDiv" class="d-inline-block mt-1 mb-1"></div>
                     <textarea id="resultsDiv" class="form-control" readonly></textarea>
                     <label for="eventsDiv" class="form-label">Events</label>
                     <textarea id="eventsDiv" readonly class="form-control"></textarea>
-                
+
                     <label for="isSSML" class="invisible">Is SSML</label>
                     <input type="checkbox" class="invisible" id="isSSML" name="isSSML" value="ssml">
 
@@ -182,13 +187,13 @@
                                 break;
                             }
                         }
-                        if (wordBoundary !== undefined) {                            
+                        if (wordBoundary !== undefined) {
                             highlightDiv.innerHTML = synthesisText.value.substr(0, wordBoundary.textOffset) +
                                 "<mark id='highlighted-word'>" + wordBoundary.text + "</mark>" +
                                 synthesisText.value.substr(wordBoundary.textOffset + wordBoundary.wordLength);
-                                
-                                // Navigate to the highlighted word.
-                                document.getElementById('highlighted-word').scrollIntoView();
+
+                            // Navigate to the highlighted word.
+                            document.getElementById('highlighted-word').scrollIntoView();
 
                         } else {
                             highlightDiv.innerHTML = synthesisText.value;
