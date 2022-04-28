@@ -15,6 +15,7 @@
             background-color: yellow;
             color: black;
         }
+
         #highlightDiv {
             overflow: scroll;
             height: 200px;
@@ -31,7 +32,7 @@
 
 <body class="bg-primary bg-blue">
     <div class="container bg-white shadow">
-        <div class="col-12 col-md-8 p-3">
+        <div class="col-12 col-md-10 p-3">
             <div id="warning">
                 <h1 style="font-weight:500;">Speech Speech SDK not found
                     (microsoft.cognitiveservices.speech.sdk.bundle.js missing).</h1>
@@ -104,8 +105,10 @@
                     <button id="pauseButton" class="btn btn-primary">⏹️ Pause</button>
                     <button id="resumeButton" class="btn btn-primary">▶️ Resume</button>
                     <button id="downloadButton" class="btn btn-primary">🔽 Download</button>
-                    <button type="button" id="stripButton" class="btn mt-3 mb-3 btn-primary">📝 Strip verse numbers from
-                        text</button>
+                    <button type="button" id="stripButton" class="btn mt-3 mb-3 btn-primary">📝 Strip verse
+                        numbers</button>
+                    <button type="button" id="replaceAbbreviatedBooksButton" class="btn mt-3 mb-3 btn-primary">📝
+                        Replace abbreviated books</button>
                     <br />
                     <label for="resultsDiv" class="form-label">Results:</label>
                     <label for="highlightDiv" class="form-label"></label>
@@ -529,6 +532,10 @@
                     stripVerseNumbers();
                     rememberLastUsedParameters();
                 });
+                replaceAbbreviatedBooksButton.addEventListener("click", () => {
+                    replaceAbbreviatedBooks();
+                    rememberLastUsedParameters();
+                });
 
             });
             function loadVoiceList(response) {
@@ -551,7 +558,6 @@
                 voiceOptions.disabled = false;
             }
             // Strip verse number from text. The issue is if there are numbers in the verse such as: Biarpun aku mempunyai 60 orang permaisuri Dan 80 orang gundik
-
             function stripVerseNumbers() {
                 // Try to remove digits that have a symbol in front of them. 
                 synthesisText.value = synthesisText.value.replace(/([,“”".;?!])\d+/g, "$1");
@@ -560,6 +566,16 @@
                 synthesisText.value = synthesisText.value.replace(/([,“”".;?!]\s)\d+/g, "$1");
 
                 eventsDiv.innerHTML += "Stripped verse numbers from the text." + "\r\n";
+
+            }
+
+            function replaceAbbreviatedBooks() {
+                let str = synthesisText.value;
+                let res = str.replace(/Mrk./g, "Markus");
+
+                synthesisText.value = res;
+
+                eventsDiv.innerHTML += "Replaced abbreviated books from the text." + "\r\n";
 
             }
         </script>
