@@ -5,9 +5,17 @@
     <title>Azure Text to Speech</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-        <!-- JavaScript Bundle with Popper -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
     <meta charset="utf-8" />
+    <style>
+        mark {
+            background-color: yellow;
+            color: black;
+        }
+    </style>
 </head>
 
 <body class="bg-primary bg-blue">
@@ -19,519 +27,531 @@
             </div>
 
             <div id="content">
-                
+
                 <p class="display-6">Text to Audio / Text to MP3 Audio File</p>
-                <p><a href="https://drive.google.com/file/d/11Dk1fR9e4AexWoHSaZ0VH2z8Orbe3WBD/view?usp=sharing" target="_blank">Watch video tutorial on how to use this webpage.</a></p>
+                <p><a href="https://drive.google.com/file/d/11Dk1fR9e4AexWoHSaZ0VH2z8Orbe3WBD/view?usp=sharing"
+                        target="_blank">Watch video tutorial on how to use this webpage.</a></p>
                 <div class="accordion" id="accordionExample">
                     <div class="accordion-item">
-                      <h2 class="accordion-header" id="headingOne">
-                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                          Change settings such as language, etc...
-                        </button>
-                      </h2>
-                      <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                        <div class="accordion-body">
-                          
-                            <label for="subscriptionKey" class="form-label">Azure Speech Service Subscription Key</label>
-                            <input type="password" class="form-control" id="subscriptionKey" placeholder="YourSubscriptionKey">
-                            <label for="regionOptions" class="form-label">Azure Service Region</label>
-                            <!-- see https://aka.ms/csspeech/region for more details-->
-                            <select id="regionOptions" class="form-select mb-1">
-                                <option value="westus" selected="selected">West US</option>
-                                <option value="westus2">West US2</option>
-                                <option value="eastus">East US</option>
-                                <option value="eastus2">East US2</option>
-                                <option value="centralus">Central US</option>
-                                <option value="northcentralus">North Central US</option>
-                                <option value="southcentralus">South Central US</option>
-                                <option value="westcentralus">West Central US</option>
-                                <option value="canadacentral">Canada Central</option>
-                                <option value="brazilsouth">Brazil South</option>
-                                <option value="eastasia">East Asia</option>
-                                <option value="southeastasia">South East Asia</option>
-                                <option value="australiaeast">Australia East</option>
-                                <option value="centralindia">Central India</option>
-                                <option value="japaneast">Japan East</option>
-                                <option value="japanwest">Japan West</option>
-                                <option value="koreacentral">Korea Central</option>
-                                <option value="northeurope">North Europe</option>
-                                <option value="westeurope">West Europe</option>
-                                <option value="francecentral">France Central</option>
-                                <option value="uksouth">UK South</option>
-                                <option value="chinaeast2">China East2 (azure.cn)</option>
-                            </select>
-                            <button id="updateVoiceListButton" class="btn btn-primary">Update Voice List</button><br />
-                            <label for="voiceOptions" class="form-label">Select Voice</label>
-                            <select id="voiceOptions" class="form-select" disabled>
-                                <option>Please update voice list first.</option>
-                            </select>
+                        <h2 class="accordion-header" id="headingOne">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                Change settings such as language, etc...
+                            </button>
+                        </h2>
+                        <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+                            data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
 
+                                <label for="subscriptionKey" class="form-label">Azure Speech Service Subscription
+                                    Key</label>
+                                <input type="password" class="form-control" id="subscriptionKey"
+                                    placeholder="YourSubscriptionKey">
+                                <label for="regionOptions" class="form-label">Azure Service Region</label>
+                                <!-- see https://aka.ms/csspeech/region for more details-->
+                                <select id="regionOptions" class="form-select mb-1">
+                                    <option value="westus" selected="selected">West US</option>
+                                    <option value="westus2">West US2</option>
+                                    <option value="eastus">East US</option>
+                                    <option value="eastus2">East US2</option>
+                                    <option value="centralus">Central US</option>
+                                    <option value="northcentralus">North Central US</option>
+                                    <option value="southcentralus">South Central US</option>
+                                    <option value="westcentralus">West Central US</option>
+                                    <option value="canadacentral">Canada Central</option>
+                                    <option value="brazilsouth">Brazil South</option>
+                                    <option value="eastasia">East Asia</option>
+                                    <option value="southeastasia">South East Asia</option>
+                                    <option value="australiaeast">Australia East</option>
+                                    <option value="centralindia">Central India</option>
+                                    <option value="japaneast">Japan East</option>
+                                    <option value="japanwest">Japan West</option>
+                                    <option value="koreacentral">Korea Central</option>
+                                    <option value="northeurope">North Europe</option>
+                                    <option value="westeurope">West Europe</option>
+                                    <option value="francecentral">France Central</option>
+                                    <option value="uksouth">UK South</option>
+                                    <option value="chinaeast2">China East2 (azure.cn)</option>
+                                </select>
+                                <button id="updateVoiceListButton" class="btn btn-primary">Update Voice
+                                    List</button><br />
+                                <label for="voiceOptions" class="form-label">Select Voice</label>
+                                <select id="voiceOptions" class="form-select" disabled>
+                                    <option>Please update voice list first.</option>
+                                </select>
+
+                            </div>
                         </div>
-                      </div>
                     </div>
-                
-                
-                <label for="synthesisText" class="form-label">Text to Transcribe</label>
-                <textarea rows="10" cols="50" class="form-control mb-1" id="synthesisText" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
 
-                <button id="startSynthesisAsyncButton" class="btn btn-primary">▶️ Start synthesis</button>
-                <button id="pauseButton" class="btn btn-primary">⏹️ Pause</button>
-                <button id="resumeButton" class="btn btn-primary">▶️ Resume</button>
-                <button id="downloadButton" class="btn btn-primary">🔽 Download</button>
-                <button type="button" id="stripButton" class="btn mt-3 mb-3 btn-primary">📝 Strip verse numbers from
-                    text</button>
-                <br />
-                <label for="resultsDiv" class="form-label">Results</label>
-                <textarea id="resultsDiv" class="form-control" readonly></textarea>
-                <label for="eventsDiv" class="form-label">Events</label>
-                <textarea id="eventsDiv" readonly class="form-control"></textarea>
-                <label for="highlightDiv" class="form-label">Highlight</label>
-                <div id="highlightDiv" class="d-inline-block"></div>
-                <label for="isSSML" class="invisible">Is SSML</label>
-                <input type="checkbox" class="invisible" id="isSSML" name="isSSML" value="ssml">
 
+                    <label for="synthesisText" class="form-label">Text to Transcribe</label>
+                    <textarea rows="10" cols="50" class="form-control mb-1" id="synthesisText" autocomplete="off"
+                        autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
+
+                    <button id="startSynthesisAsyncButton" class="btn btn-primary">▶️ Start synthesis</button>
+                    <button id="pauseButton" class="btn btn-primary">⏹️ Pause</button>
+                    <button id="resumeButton" class="btn btn-primary">▶️ Resume</button>
+                    <button id="downloadButton" class="btn btn-primary">🔽 Download</button>
+                    <button type="button" id="stripButton" class="btn mt-3 mb-3 btn-primary">📝 Strip verse numbers from
+                        text</button>
+                    <br />
+                    <label for="resultsDiv" class="form-label">Results</label>
+                    <label for="highlightDiv" class="form-label"></label>
+                    <div id="highlightDiv" class="d-inline-block m-1"></div>
+                    <textarea id="resultsDiv" class="form-control" readonly></textarea>
+                    <label for="eventsDiv" class="form-label">Events</label>
+                    <textarea id="eventsDiv" readonly class="form-control"></textarea>
+                
+                    <label for="isSSML" class="invisible">Is SSML</label>
+                    <input type="checkbox" class="invisible" id="isSSML" name="isSSML" value="ssml">
+
+                </div>
             </div>
+            <p>Warren Churulich - <a href="https://engineer4business.com">https://engineer4business.com</a></p>
         </div>
-        <p>Warren Churulich - <a href="https://engineer4business.com">https://engineer4business.com</a></p>
-    </div>
 
 
 
 
-    <!-- Speech SDK reference sdk. -->
-    <script src="/scripts/microsoft.cognitiveservices.speech.sdk.bundle.js"></script>
+        <!-- Speech SDK reference sdk. -->
+        <script src="/scripts/microsoft.cognitiveservices.speech.sdk.bundle.js"></script>
 
-    <!-- Speech SDK USAGE -->
-    <script>
-        // On document load resolve the Speech SDK dependency
-        function Initialize(onComplete) {
-            if (!!window.SpeechSDK) {
-                document.getElementById('content').style.display = 'block';
-                document.getElementById('warning').style.display = 'none';
-                onComplete(window.SpeechSDK);
+        <!-- Speech SDK USAGE -->
+        <script>
+            // On document load resolve the Speech SDK dependency
+            function Initialize(onComplete) {
+                if (!!window.SpeechSDK) {
+                    document.getElementById('content').style.display = 'block';
+                    document.getElementById('warning').style.display = 'none';
+                    onComplete(window.SpeechSDK);
+                }
             }
-        }
-    </script>
+        </script>
 
-    <!-- Browser Hooks -->
-    <script>
-        // status fields and start button in UI
-        var resultsDiv, eventsDiv;
-        var highlightDiv;
-        var startSynthesisAsyncButton, pauseButton, resumeButton, downloadButton;
-        var updateVoiceListButton;
+        <!-- Browser Hooks -->
+        <script>
+            // status fields and start button in UI
+            var resultsDiv, eventsDiv;
+            var highlightDiv;
+            var startSynthesisAsyncButton, pauseButton, resumeButton, downloadButton;
+            var updateVoiceListButton;
 
-        // subscription key and region for speech services.
-        var subscriptionKey, regionOptions;
-        var authorizationToken;
-        var voiceOptions, isSsml;
-        var SpeechSDK;
-        var synthesisText;
-        var synthesizer;
-        var player;
-        var wordBoundaryList = [];
-        var voiceList = null;
+            // subscription key and region for speech services.
+            var subscriptionKey, regionOptions;
+            var authorizationToken;
+            var voiceOptions, isSsml;
+            var SpeechSDK;
+            var synthesisText;
+            var synthesizer;
+            var player;
+            var wordBoundaryList = [];
+            var voiceList = null;
 
-        document.addEventListener("DOMContentLoaded", function () {
+            document.addEventListener("DOMContentLoaded", function () {
 
-            startSynthesisAsyncButton = document.getElementById("startSynthesisAsyncButton");
-            updateVoiceListButton = document.getElementById("updateVoiceListButton");
-            pauseButton = document.getElementById("pauseButton");
-            resumeButton = document.getElementById("resumeButton");
-            downloadButton = document.getElementById("downloadButton");
-            subscriptionKey = document.getElementById("subscriptionKey");
-            regionOptions = document.getElementById("regionOptions");
-            resultsDiv = document.getElementById("resultsDiv");
-            eventsDiv = document.getElementById("eventsDiv");
-            voiceOptions = document.getElementById("voiceOptions");
-            isSsml = document.getElementById("isSSML");
-            highlightDiv = document.getElementById("highlightDiv");
-            synthesisText = document.getElementById("synthesisText");
-            loadLastUsedParameters();
+                startSynthesisAsyncButton = document.getElementById("startSynthesisAsyncButton");
+                updateVoiceListButton = document.getElementById("updateVoiceListButton");
+                pauseButton = document.getElementById("pauseButton");
+                resumeButton = document.getElementById("resumeButton");
+                downloadButton = document.getElementById("downloadButton");
+                subscriptionKey = document.getElementById("subscriptionKey");
+                regionOptions = document.getElementById("regionOptions");
+                resultsDiv = document.getElementById("resultsDiv");
+                eventsDiv = document.getElementById("eventsDiv");
+                voiceOptions = document.getElementById("voiceOptions");
+                isSsml = document.getElementById("isSSML");
+                highlightDiv = document.getElementById("highlightDiv");
+                synthesisText = document.getElementById("synthesisText");
+                loadLastUsedParameters();
 
-            setInterval(function () {
-                if (player !== undefined) {
-                    const currentTime = player.currentTime;
-                    var wordBoundary;
-                    for (const e of wordBoundaryList) {
-                        if (currentTime * 1000 > e.audioOffset / 10000) {
-                            wordBoundary = e;
+                setInterval(function () {
+                    if (player !== undefined) {
+                        const currentTime = player.currentTime;
+                        var wordBoundary;
+                        for (const e of wordBoundaryList) {
+                            if (currentTime * 1000 > e.audioOffset / 10000) {
+                                wordBoundary = e;
+                            } else {
+                                break;
+                            }
+                        }
+                        if (wordBoundary !== undefined) {                            
+                            highlightDiv.innerHTML = synthesisText.value.substr(0, wordBoundary.textOffset) +
+                                "<mark id='highlighted-word'>" + wordBoundary.text + "</mark>" +
+                                synthesisText.value.substr(wordBoundary.textOffset + wordBoundary.wordLength);
+                                
+                                // Navigate to the highlighted word.
+                                document.getElementById('highlighted-word').scrollIntoView();
+
                         } else {
-                            break;
+                            highlightDiv.innerHTML = synthesisText.value;
                         }
                     }
-                    if (wordBoundary !== undefined) {
-                        highlightDiv.innerHTML = synthesisText.value.substr(0, wordBoundary.textOffset) +
-                            "<mark>" + wordBoundary.text + "</mark>" +
-                            synthesisText.value.substr(wordBoundary.textOffset + wordBoundary.wordLength);
+                }, 50);
+
+                updateVoiceListButton.addEventListener("click", function () {
+                    var request = new XMLHttpRequest();
+                    request.open('GET',
+                        'https://' + regionOptions.value + ".tts.speech." +
+                        (regionOptions.value.startsWith("china") ? "azure.cn" : "microsoft.com") +
+                        "/cognitiveservices/voices/list", true);
+                    if (authorizationToken) {
+                        request.setRequestHeader("Authorization", "Bearer " + authorizationToken);
                     } else {
-                        highlightDiv.innerHTML = synthesisText.value;
+                        if (subscriptionKey.value === "" || subscriptionKey.value === "subscription") {
+                            alert("Please enter your Microsoft Cognitive Services Speech subscription key!");
+                            return;
+                        }
+                        request.setRequestHeader("Ocp-Apim-Subscription-Key", subscriptionKey.value);
                     }
-                }
-            }, 50);
 
-            updateVoiceListButton.addEventListener("click", function () {
-                var request = new XMLHttpRequest();
-                request.open('GET',
-                    'https://' + regionOptions.value + ".tts.speech." +
-                    (regionOptions.value.startsWith("china") ? "azure.cn" : "microsoft.com") +
-                    "/cognitiveservices/voices/list", true);
-                if (authorizationToken) {
-                    request.setRequestHeader("Authorization", "Bearer " + authorizationToken);
-                } else {
-                    if (subscriptionKey.value === "" || subscriptionKey.value === "subscription") {
-                        alert("Please enter your Microsoft Cognitive Services Speech subscription key!");
-                        return;
-                    }
-                    request.setRequestHeader("Ocp-Apim-Subscription-Key", subscriptionKey.value);
-                }
+                    request.onload = function () {
+                        if (request.status >= 200 && request.status < 400) {
+                            const response = this.response;
+                            voiceList = response;
+                            rememberLastUsedParameters();
+                            loadVoiceList(response);
 
-                request.onload = function () {
-                    if (request.status >= 200 && request.status < 400) {
-                        const response = this.response;
-                        voiceList = response;
-                        rememberLastUsedParameters();
-                        loadVoiceList(response);
+                        } else {
+                            window.console.log(this);
+                            eventsDiv.innerHTML += "cannot get voice list, code: " + this.status + " detail: " + this.statusText + "\r\n";
+                        }
+                    };
 
-                    } else {
-                        window.console.log(this);
-                        eventsDiv.innerHTML += "cannot get voice list, code: " + this.status + " detail: " + this.statusText + "\r\n";
-                    }
-                };
+                    request.send()
+                });
 
-                request.send()
-            });
-
-            pauseButton.addEventListener("click", function () {
-                player.pause();
-                pauseButton.disabled = true;
-                resumeButton.disabled = false;
-            });
-
-            resumeButton.addEventListener("click", function () {
-                player.resume();
-                pauseButton.disabled = false;
-                resumeButton.disabled = true;
-            });
-
-            startSynthesisAsyncButton.addEventListener("click", function () {
-                startSynthesisAsyncButton.disabled = true;
-                downloadButton.disabled = true;
-                resultsDiv.innerHTML = "";
-                eventsDiv.innerHTML = "";
-                wordBoundaryList = [];
-                synthesisText = document.getElementById("synthesisText");
-
-                // if we got an authorization token, use the token. Otherwise use the provided subscription key
-                var speechConfig;
-                if (authorizationToken) {
-                    speechConfig = SpeechSDK.SpeechConfig.fromAuthorizationToken(authorizationToken, regionOptions.value);
-                } else {
-                    if (subscriptionKey.value === "" || subscriptionKey.value === "subscription") {
-                        alert("Please enter your Microsoft Cognitive Services Speech subscription key!");
-                        return;
-                    }
-                    speechConfig = SpeechSDK.SpeechConfig.fromSubscription(subscriptionKey.value, regionOptions.value);
-                }
-
-                speechConfig.speechSynthesisVoiceName = voiceOptions.value;
-                speechConfig.sp
-                player = new SpeechSDK.SpeakerAudioDestination();
-                player.onAudioEnd = function (_) {
-                    window.console.log("playback finished");
-                    eventsDiv.innerHTML += "playback finished" + "\r\n";
-                    startSynthesisAsyncButton.disabled = false;
-                    downloadButton.disabled = false;
+                pauseButton.addEventListener("click", function () {
+                    player.pause();
                     pauseButton.disabled = true;
-                    resumeButton.disabled = true;
-                    wordBoundaryList = [];
-                };
+                    resumeButton.disabled = false;
+                });
 
-                var audioConfig = SpeechSDK.AudioConfig.fromSpeakerOutput(player);
-
-                synthesizer = new SpeechSDK.SpeechSynthesizer(speechConfig, audioConfig);
-
-                // The event synthesizing signals that a synthesized audio chunk is received.
-                // You will receive one or more synthesizing events as a speech phrase is synthesized.
-                // You can use this callback to streaming receive the synthesized audio.
-                synthesizer.synthesizing = function (s, e) {
-                    window.console.log(e);
-                    eventsDiv.innerHTML += "(synthesizing) Reason: " + SpeechSDK.ResultReason[e.result.reason] +
-                        "Audio chunk length: " + e.result.audioData.byteLength + "\r\n";
-                };
-
-                // The synthesis started event signals that the synthesis is started.
-                synthesizer.synthesisStarted = function (s, e) {
-                    window.console.log(e);
-                    eventsDiv.innerHTML += "(synthesis started)" + "\r\n";
+                resumeButton.addEventListener("click", function () {
+                    player.resume();
                     pauseButton.disabled = false;
-                };
-
-                // The event synthesis completed signals that the synthesis is completed.
-                synthesizer.synthesisCompleted = function (s, e) {
-                    console.log(e);
-                    eventsDiv.innerHTML += "(synthesized)  Reason: " + SpeechSDK.ResultReason[e.result.reason] +
-                        " Audio length: " + e.result.audioData.byteLength + "\r\n";
-                };
-
-                // The event signals that the service has stopped processing speech.
-                // This can happen when an error is encountered.
-                synthesizer.SynthesisCanceled = function (s, e) {
-                    const cancellationDetails = SpeechSDK.CancellationDetails.fromResult(e.result);
-                    let str = "(cancel) Reason: " + SpeechSDK.CancellationReason[cancellationDetails.reason];
-                    if (cancellationDetails.reason === SpeechSDK.CancellationReason.Error) {
-                        str += ": " + e.result.errorDetails;
-                    }
-                    window.console.log(e);
-                    eventsDiv.innerHTML += str + "\r\n";
-                    startSynthesisAsyncButton.disabled = false;
-                    downloadButton.disabled = false;
-                    pauseButton.disabled = true;
                     resumeButton.disabled = true;
-                };
+                });
 
-                // This event signals that word boundary is received. This indicates the audio boundary of each word.
-                // The unit of e.audioOffset is tick (1 tick = 100 nanoseconds), divide by 10,000 to convert to milliseconds.
-                synthesizer.wordBoundary = function (s, e) {
-                    window.console.log(e);
-                    eventsDiv.innerHTML += "(WordBoundary), Text: " + e.text + ", Audio offset: " + e.audioOffset / 10000 + "ms." + "\r\n";
-                    wordBoundaryList.push(e);
-                };
+                startSynthesisAsyncButton.addEventListener("click", function () {
+                    startSynthesisAsyncButton.disabled = true;
+                    downloadButton.disabled = true;
+                    resultsDiv.innerHTML = "";
+                    eventsDiv.innerHTML = "";
+                    wordBoundaryList = [];
+                    synthesisText = document.getElementById("synthesisText");
 
-                const complete_cb = function (result) {
-                    if (result.reason === SpeechSDK.ResultReason.SynthesizingAudioCompleted) {
-                        resultsDiv.innerHTML += "synthesis finished";
-                    } else if (result.reason === SpeechSDK.ResultReason.Canceled) {
-                        resultsDiv.innerHTML += "synthesis failed. Error detail: " + result.errorDetails;
+                    // if we got an authorization token, use the token. Otherwise use the provided subscription key
+                    var speechConfig;
+                    if (authorizationToken) {
+                        speechConfig = SpeechSDK.SpeechConfig.fromAuthorizationToken(authorizationToken, regionOptions.value);
+                    } else {
+                        if (subscriptionKey.value === "" || subscriptionKey.value === "subscription") {
+                            alert("Please enter your Microsoft Cognitive Services Speech subscription key!");
+                            return;
+                        }
+                        speechConfig = SpeechSDK.SpeechConfig.fromSubscription(subscriptionKey.value, regionOptions.value);
                     }
-                    window.console.log(result);
-                    synthesizer.close();
-                    synthesizer = undefined;
-                };
-                const err_cb = function (err) {
-                    startSynthesisAsyncButton.disabled = false;
-                    downloadButton.disabled = false;
-                    phraseDiv.innerHTML += err;
-                    window.console.log(err);
-                    synthesizer.close();
-                    synthesizer = undefined;
-                };
-                if (isSsml.checked) {
-                    synthesizer.speakSsmlAsync(synthesisText.value,
-                        complete_cb,
-                        err_cb);
-                } else {
-                    synthesizer.speakTextAsync(synthesisText.value,
-                        complete_cb,
-                        err_cb);
-                }
-            });
-
-            downloadButton.addEventListener("click", function () {
-                downloadButton.innerText = "⌛Download";
-                startSynthesisAsyncButton.disabled = true;
-                downloadButton.disabled = true;
-                resultsDiv.innerHTML = "";
-                eventsDiv.innerHTML = "";
-                synthesisText = document.getElementById("synthesisText");
-
-                var speechConfig,
-                    audioConfig,
-                    outputStream,
-                    pushStreamCallback,
-                    wavFragments = {},
-                    currentFragment = 0;
-
-                // if we got an authorization token, use the token. Otherwise use the provided subscription key
-                if (authorizationToken) {
-                    speechConfig = SpeechSDK.SpeechConfig.fromAuthorizationToken(authorizationToken, regionOptions.value);
-                } else {
-                    if (subscriptionKey.value === "" || subscriptionKey.value === "subscription") {
-                        alert("Please enter your Microsoft Cognitive Services Speech subscription key!");
-                        return;
-                    }
-                    speechConfig = SpeechSDK.SpeechConfig.fromSubscription(subscriptionKey.value, regionOptions.value);
 
                     speechConfig.speechSynthesisVoiceName = voiceOptions.value;
-                    speechConfig.SpeechSynthesisOutputFormat = SpeechSDK.SpeechSynthesisOutputFormat.Audio24Khz96KBitRateMonoMp3;
-                }
+                    speechConfig.sp
+                    player = new SpeechSDK.SpeakerAudioDestination();
+                    player.onAudioEnd = function (_) {
+                        window.console.log("playback finished");
+                        eventsDiv.innerHTML += "playback finished" + "\r\n";
+                        startSynthesisAsyncButton.disabled = false;
+                        downloadButton.disabled = false;
+                        pauseButton.disabled = true;
+                        resumeButton.disabled = true;
+                        wordBoundaryList = [];
+                    };
 
-                pushStreamCallback = {
-                    write: function (dataBuffer) {
-                        wavFragments[currentFragment] = dataBuffer;
-                        currentFragment += 1;
-                    },
-                    close: function () {
-                        var byteCount = 0,
-                            sentAudio,
-                            a,
-                            url;
+                    var audioConfig = SpeechSDK.AudioConfig.fromSpeakerOutput(player);
 
-                        for (i = 0; i < currentFragment; i += 1) {
-                            byteCount += wavFragments[i].byteLength;
+                    synthesizer = new SpeechSDK.SpeechSynthesizer(speechConfig, audioConfig);
+
+                    // The event synthesizing signals that a synthesized audio chunk is received.
+                    // You will receive one or more synthesizing events as a speech phrase is synthesized.
+                    // You can use this callback to streaming receive the synthesized audio.
+                    synthesizer.synthesizing = function (s, e) {
+                        window.console.log(e);
+                        eventsDiv.innerHTML += "(synthesizing) Reason: " + SpeechSDK.ResultReason[e.result.reason] +
+                            "Audio chunk length: " + e.result.audioData.byteLength + "\r\n";
+                    };
+
+                    // The synthesis started event signals that the synthesis is started.
+                    synthesizer.synthesisStarted = function (s, e) {
+                        window.console.log(e);
+                        eventsDiv.innerHTML += "(synthesis started)" + "\r\n";
+                        pauseButton.disabled = false;
+                    };
+
+                    // The event synthesis completed signals that the synthesis is completed.
+                    synthesizer.synthesisCompleted = function (s, e) {
+                        console.log(e);
+                        eventsDiv.innerHTML += "(synthesized)  Reason: " + SpeechSDK.ResultReason[e.result.reason] +
+                            " Audio length: " + e.result.audioData.byteLength + "\r\n";
+                    };
+
+                    // The event signals that the service has stopped processing speech.
+                    // This can happen when an error is encountered.
+                    synthesizer.SynthesisCanceled = function (s, e) {
+                        const cancellationDetails = SpeechSDK.CancellationDetails.fromResult(e.result);
+                        let str = "(cancel) Reason: " + SpeechSDK.CancellationReason[cancellationDetails.reason];
+                        if (cancellationDetails.reason === SpeechSDK.CancellationReason.Error) {
+                            str += ": " + e.result.errorDetails;
                         }
+                        window.console.log(e);
+                        eventsDiv.innerHTML += str + "\r\n";
+                        startSynthesisAsyncButton.disabled = false;
+                        downloadButton.disabled = false;
+                        pauseButton.disabled = true;
+                        resumeButton.disabled = true;
+                    };
 
-                        // Output array.
-                        sentAudio = new window.Uint8Array(byteCount);
+                    // This event signals that word boundary is received. This indicates the audio boundary of each word.
+                    // The unit of e.audioOffset is tick (1 tick = 100 nanoseconds), divide by 10,000 to convert to milliseconds.
+                    synthesizer.wordBoundary = function (s, e) {
+                        window.console.log(e);
+                        eventsDiv.innerHTML += "(WordBoundary), Text: " + e.text + ", Audio offset: " + e.audioOffset / 10000 + "ms." + "\r\n";
+                        wordBoundaryList.push(e);
+                    };
 
-                        byteCount = 0;
-                        for (i = 0; i < currentFragment; i += 1) {
-                            sentAudio.set(new window.Uint8Array(wavFragments[i]), byteCount);
-                            byteCount += wavFragments[i].byteLength;
+                    const complete_cb = function (result) {
+                        if (result.reason === SpeechSDK.ResultReason.SynthesizingAudioCompleted) {
+                            resultsDiv.innerHTML += "synthesis finished";
+                        } else if (result.reason === SpeechSDK.ResultReason.Canceled) {
+                            resultsDiv.innerHTML += "synthesis failed. Error detail: " + result.errorDetails;
                         }
-                        a = document.createElement('a');
-                        url = window.URL.createObjectURL(new Blob([sentAudio]));
-                        a.href = url;
-                        a.download = 'synth.mp3';
-                        document.body.appendChild(a);
-                        a.click();
-                        setTimeout(function () {
-                            document.body.removeChild(a);
-                            window.URL.revokeObjectURL(url);
-                        }, 0);
+                        window.console.log(result);
+                        synthesizer.close();
+                        synthesizer = undefined;
+                    };
+                    const err_cb = function (err) {
+                        startSynthesisAsyncButton.disabled = false;
+                        downloadButton.disabled = false;
+                        phraseDiv.innerHTML += err;
+                        window.console.log(err);
+                        synthesizer.close();
+                        synthesizer = undefined;
+                    };
+                    if (isSsml.checked) {
+                        synthesizer.speakSsmlAsync(synthesisText.value,
+                            complete_cb,
+                            err_cb);
+                    } else {
+                        synthesizer.speakTextAsync(synthesisText.value,
+                            complete_cb,
+                            err_cb);
                     }
-                };
+                });
 
-                outputStream = SpeechSDK.PushAudioOutputStream.create(pushStreamCallback);
+                downloadButton.addEventListener("click", function () {
+                    downloadButton.innerText = "⌛Download";
+                    startSynthesisAsyncButton.disabled = true;
+                    downloadButton.disabled = true;
+                    resultsDiv.innerHTML = "";
+                    eventsDiv.innerHTML = "";
+                    synthesisText = document.getElementById("synthesisText");
 
-                audioConfig = SpeechSDK.AudioConfig.fromStreamOutput(outputStream);
+                    var speechConfig,
+                        audioConfig,
+                        outputStream,
+                        pushStreamCallback,
+                        wavFragments = {},
+                        currentFragment = 0;
 
-                synthesizer = new SpeechSDK.SpeechSynthesizer(speechConfig, audioConfig);
+                    // if we got an authorization token, use the token. Otherwise use the provided subscription key
+                    if (authorizationToken) {
+                        speechConfig = SpeechSDK.SpeechConfig.fromAuthorizationToken(authorizationToken, regionOptions.value);
+                    } else {
+                        if (subscriptionKey.value === "" || subscriptionKey.value === "subscription") {
+                            alert("Please enter your Microsoft Cognitive Services Speech subscription key!");
+                            return;
+                        }
+                        speechConfig = SpeechSDK.SpeechConfig.fromSubscription(subscriptionKey.value, regionOptions.value);
 
-                synthesizer.SynthesisCanceled = function (s, e) {
-                    const cancellationDetails = SpeechSDK.CancellationDetails.fromResult(e.result);
-                    let str = "(cancel) Reason: " + SpeechSDK.CancellationReason[cancellationDetails.reason];
-                    if (cancellationDetails.reason === SpeechSDK.CancellationReason.Error) {
-                        str += ": " + e.result.errorDetails;
+                        speechConfig.speechSynthesisVoiceName = voiceOptions.value;
+                        speechConfig.SpeechSynthesisOutputFormat = SpeechSDK.SpeechSynthesisOutputFormat.Audio24Khz96KBitRateMonoMp3;
                     }
-                    window.console.log(e);
-                    eventsDiv.innerHTML += str + "\r\n";
-                    resultsDiv.innerHTML = str;
+
+                    pushStreamCallback = {
+                        write: function (dataBuffer) {
+                            wavFragments[currentFragment] = dataBuffer;
+                            currentFragment += 1;
+                        },
+                        close: function () {
+                            var byteCount = 0,
+                                sentAudio,
+                                a,
+                                url;
+
+                            for (i = 0; i < currentFragment; i += 1) {
+                                byteCount += wavFragments[i].byteLength;
+                            }
+
+                            // Output array.
+                            sentAudio = new window.Uint8Array(byteCount);
+
+                            byteCount = 0;
+                            for (i = 0; i < currentFragment; i += 1) {
+                                sentAudio.set(new window.Uint8Array(wavFragments[i]), byteCount);
+                                byteCount += wavFragments[i].byteLength;
+                            }
+                            a = document.createElement('a');
+                            url = window.URL.createObjectURL(new Blob([sentAudio]));
+                            a.href = url;
+                            a.download = 'synth.mp3';
+                            document.body.appendChild(a);
+                            a.click();
+                            setTimeout(function () {
+                                document.body.removeChild(a);
+                                window.URL.revokeObjectURL(url);
+                            }, 0);
+                        }
+                    };
+
+                    outputStream = SpeechSDK.PushAudioOutputStream.create(pushStreamCallback);
+
+                    audioConfig = SpeechSDK.AudioConfig.fromStreamOutput(outputStream);
+
+                    synthesizer = new SpeechSDK.SpeechSynthesizer(speechConfig, audioConfig);
+
+                    synthesizer.SynthesisCanceled = function (s, e) {
+                        const cancellationDetails = SpeechSDK.CancellationDetails.fromResult(e.result);
+                        let str = "(cancel) Reason: " + SpeechSDK.CancellationReason[cancellationDetails.reason];
+                        if (cancellationDetails.reason === SpeechSDK.CancellationReason.Error) {
+                            str += ": " + e.result.errorDetails;
+                        }
+                        window.console.log(e);
+                        eventsDiv.innerHTML += str + "\r\n";
+                        resultsDiv.innerHTML = str;
+                        startSynthesisAsyncButton.disabled = false;
+                        downloadButton.disabled = false;
+                        pauseButton.disabled = true;
+                        resumeButton.disabled = true;
+                    };
+
+                    synthesizer.synthesisCompleted = function () {
+                        resultsDiv.innerHTML = "synthesis finished";
+                        synthesizer.close();
+                        startSynthesisAsyncButton.disabled = false;
+                        downloadButton.disabled = false;
+                        downloadButton.innerText = "🔽 Download";
+                    };
+
+                    if (isSsml.checked) {
+                        synthesizer.speakSsmlAsync(synthesisText.value);
+                    } else {
+                        synthesizer.speakTextAsync(synthesisText.value);
+                    }
+                });
+
+                Initialize(function (speechSdk) {
+                    SpeechSDK = speechSdk;
                     startSynthesisAsyncButton.disabled = false;
                     downloadButton.disabled = false;
                     pauseButton.disabled = true;
                     resumeButton.disabled = true;
-                };
 
-                synthesizer.synthesisCompleted = function () {
-                    resultsDiv.innerHTML = "synthesis finished";
-                    synthesizer.close();
-                    startSynthesisAsyncButton.disabled = false;
-                    downloadButton.disabled = false;
-                    downloadButton.innerText = "🔽 Download";
-                };
+                    // in case we have a function for getting an authorization token, call it.
+                    if (typeof RequestAuthorizationToken === "function") {
+                        RequestAuthorizationToken();
+                    }
+                });
 
-                if (isSsml.checked) {
-                    synthesizer.speakSsmlAsync(synthesisText.value);
-                } else {
-                    synthesizer.speakTextAsync(synthesisText.value);
-                }
-            });
+                function rememberLastUsedParameters() {
+                    if (typeof (Storage) !== "undefined") {
+                        localStorage.azureKey = subscriptionKey.value;
+                        localStorage.regionOptions = regionOptions.value;
+                        // localStorage.language = languageInput.value;
+                        if (voiceList !== null) {
+                            localStorage.voiceList = voiceList;
 
-            Initialize(function (speechSdk) {
-                SpeechSDK = speechSdk;
-                startSynthesisAsyncButton.disabled = false;
-                downloadButton.disabled = false;
-                pauseButton.disabled = true;
-                resumeButton.disabled = true;
-
-                // in case we have a function for getting an authorization token, call it.
-                if (typeof RequestAuthorizationToken === "function") {
-                    RequestAuthorizationToken();
-                }
-            });
-
-            function rememberLastUsedParameters() {
-                if (typeof (Storage) !== "undefined") {
-                    localStorage.azureKey = subscriptionKey.value;
-                    localStorage.regionOptions = regionOptions.value;
-                    // localStorage.language = languageInput.value;
-                    if (voiceList !== null) {
-                        localStorage.voiceList = voiceList;
+                        }
+                        localStorage.selectedVoice = voiceOptions.selectedIndex;
+                        localStorage.synthesisText = synthesisText.value;
 
                     }
-                    localStorage.selectedVoice = voiceOptions.selectedIndex;
-                    localStorage.synthesisText = synthesisText.value;
-
                 }
-            }
 
-            function loadLastUsedParameters() {
-                if (typeof (Storage) !== "undefined") {
-                    if (localStorage.azureKey) {
-                        subscriptionKey.value = localStorage.azureKey;
-                    }
+                function loadLastUsedParameters() {
+                    if (typeof (Storage) !== "undefined") {
+                        if (localStorage.azureKey) {
+                            subscriptionKey.value = localStorage.azureKey;
+                        }
 
-                    if (localStorage.regionOptions) {
-                        regionOptions.value = localStorage.regionOptions;
-                    }
-                    if (localStorage.voiceList) {
-                        var response = localStorage.voiceList;
-                        loadVoiceList(response);
+                        if (localStorage.regionOptions) {
+                            regionOptions.value = localStorage.regionOptions;
+                        }
+                        if (localStorage.voiceList) {
+                            var response = localStorage.voiceList;
+                            loadVoiceList(response);
 
-                        if (localStorage.selectedVoice) {
-                            // Try to select the last used value.
-                            voiceOptions.selectedIndex = localStorage.selectedVoice;
+                            if (localStorage.selectedVoice) {
+                                // Try to select the last used value.
+                                voiceOptions.selectedIndex = localStorage.selectedVoice;
+                            }
+                        }
+
+
+                        if (localStorage.synthesisText) {
+                            synthesisText.value = localStorage.synthesisText;
                         }
                     }
+                }
+                // This will make any text input be saved for future use.
+                subscriptionKey.addEventListener("input", () => {
+                    rememberLastUsedParameters();
+                });
+                regionOptions.addEventListener("input", () => {
+                    rememberLastUsedParameters();
+                });
+                synthesisText.addEventListener("input", () => {
+                    rememberLastUsedParameters();
+                });
+                voiceOptions.addEventListener("change", () => {
+                    rememberLastUsedParameters();
+                });
+                stripButton.addEventListener("click", () => {
+                    stripVerseNumbers();
+                    rememberLastUsedParameters();
+                });
 
+            });
+            function loadVoiceList(response) {
 
-                    if (localStorage.synthesisText) {
-                        synthesisText.value = localStorage.synthesisText;
+                const neuralSupport = (response.indexOf("AriaNeural") > 0);
+                const defaultVoice = neuralSupport ? "AriaNeural" : "AriaRUS";
+                let selectId;
+                const data = JSON.parse(response);
+
+                voiceOptions.innerHTML = "";
+
+                data.forEach((voice, index) => {
+                    voiceOptions.innerHTML += "<option value=\"" + voice.Name + "\">" + voice.LocaleName + " " + voice.LocalName + " Gender:" + voice.Gender + " Voice: " + voice.ShortName + "</option>";
+                    if (voice.Name.indexOf("AriaNeural") > 0) {
+                        selectId = index;
                     }
-                }
+                });
+
+                voiceOptions.selectedIndex = selectId;
+                voiceOptions.disabled = false;
             }
-            // This will make any text input be saved for future use.
-            subscriptionKey.addEventListener("input", () => {
-                rememberLastUsedParameters();
-            });
-            regionOptions.addEventListener("input", () => {
-                rememberLastUsedParameters();
-            });
-            synthesisText.addEventListener("input", () => {
-                rememberLastUsedParameters();
-            });
-            voiceOptions.addEventListener("change", () => {
-                rememberLastUsedParameters();                
-            });
-            stripButton.addEventListener("click", () => {
-                stripVerseNumbers();
-                rememberLastUsedParameters();
-            });
-
-        });
-        function loadVoiceList(response) {
-
-            const neuralSupport = (response.indexOf("AriaNeural") > 0);
-            const defaultVoice = neuralSupport ? "AriaNeural" : "AriaRUS";
-            let selectId;
-            const data = JSON.parse(response);
-
-            voiceOptions.innerHTML = "";
-
-            data.forEach((voice, index) => {
-                voiceOptions.innerHTML += "<option value=\"" + voice.Name + "\">" + voice.LocaleName + " " + voice.LocalName + " Gender:" + voice.Gender + " Voice: " + voice.ShortName + "</option>";
-                if (voice.Name.indexOf("AriaNeural") > 0) {
-                    selectId = index;
-                }
-            });
-
-            voiceOptions.selectedIndex = selectId;
-            voiceOptions.disabled = false;
-        }
             // Strip verse number from text. The issue is if there are numbers in the verse such as: Biarpun aku mempunyai 60 orang permaisuri Dan 80 orang gundik
-    
-    function stripVerseNumbers() {
-        // Try to remove digits that have a symbol in front of them. 
-        synthesisText.value = synthesisText.value.replace(/([,“”".;?!])\d+/g, "$1");
-        //textInput.value = textInput.value.replace(/(\.\s)\d+/g, "$1");    
-        // Try to remove digits that have a symbol then a space preceding them.
-        synthesisText.value = synthesisText.value.replace(/([,“”".;?!]\s)\d+/g, "$1");
-        
-        eventsDiv.innerHTML += "Stripped verse numbers from the text." + "\r\n";
-    
-    }
-    </script>
+
+            function stripVerseNumbers() {
+                // Try to remove digits that have a symbol in front of them. 
+                synthesisText.value = synthesisText.value.replace(/([,“”".;?!])\d+/g, "$1");
+                //textInput.value = textInput.value.replace(/(\.\s)\d+/g, "$1");    
+                // Try to remove digits that have a symbol then a space preceding them.
+                synthesisText.value = synthesisText.value.replace(/([,“”".;?!]\s)\d+/g, "$1");
+
+                eventsDiv.innerHTML += "Stripped verse numbers from the text." + "\r\n";
+
+            }
+        </script>
 </body>
 
 </html>
