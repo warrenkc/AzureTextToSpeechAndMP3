@@ -197,7 +197,7 @@
                         }
                         if (wordBoundary !== undefined) {
                             highlightDiv.innerHTML = synthesisText.value.substr(0, wordBoundary.textOffset) +
-                                "<mark id='highlighted-word'>" + wordBoundary.text + "</mark>" +
+                                "<mark id='highlighted-word'>" + wordBoundary.text.trim() + "</mark>" +
                                 synthesisText.value.substr(wordBoundary.textOffset + wordBoundary.wordLength);
 
                             // Navigate to the highlighted word.
